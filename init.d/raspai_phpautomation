@@ -1,0 +1,34 @@
+#!/bin/bash
+
+
+### BEGIN INIT INFO
+# Provides:          raspai_phpautomation
+# Required-Start:    $local_fs $remote_fs $network mysql
+# Required-Stop:     $local_fs $remote_fs $network mysql
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: raspai_phpautomation
+### END INIT INFO
+
+RASPAI_PATH="/home/pi/raspai"
+NAME="PHP AutomationBot"
+SCREEN_NAME="raspai_phpautomation"
+
+me=`basename $0`
+case "$1" in
+  start)
+    screen -dmS "$SCREEN_NAME" "$RASPAI_PATH/$SCREEN_NAME/start.sh"
+    echo "Raspai:$NAME started on screen $SCREEN_NAME"
+    ;;
+  stop)
+    screen -X -S "$SCREEN_NAME" kill
+    echo "Raspai:$NAME shutting down"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/$me {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
+

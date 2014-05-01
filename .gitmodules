@@ -1,0 +1,3 @@
+[submodule "raspai_phpautomation/app"]
+	path = raspai_phpautomation/app
+	url = https://github.com/peec/php-automation-ai.git

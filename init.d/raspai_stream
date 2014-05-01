@@ -1,0 +1,31 @@
+#!/bin/bash
+### BEGIN INIT INFO
+# Provides:          raspai_stream
+# Required-Start:    $local_fs 
+# Required-Stop:     $local_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: raspai_stream
+### END INIT INFO
+
+RASPAI_PATH="/home/pi/raspai"
+NAME="CamStream"
+SCREEN_NAME="raspai_stream"
+
+me=`basename $0`
+case "$1" in
+  start)
+    screen -dmS "$SCREEN_NAME" "$RASPAI_PATH/$SCREEN_NAME/start.sh"
+    echo "Raspai:$NAME started on screen $SCREEN_NAME"
+    ;;
+  stop)
+    screen -X -S "$SCREEN_NAME" kill
+    echo "Raspai:$NAME shutting down"
+    ;;
+  *)
+    echo "Usage: /etc/init.d/$me {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0
