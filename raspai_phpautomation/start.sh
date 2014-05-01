@@ -3,14 +3,9 @@
 MY_PATH="`dirname \"$0\"`"
 MY_PATH="`( cd \"$MY_PATH\" && pwd )`"
 
-if [ -z "$MY_PATH" ] ; then
-  # error; for some reason, the path is not accessible
-  # to the script (e.g. permissions re-evaled after suid)
-  echo "Error, could not find path of script."
-  exit 1  # fail
-fi
-
 source "$MY_PATH/config.cfg"
 
-FORECAST_API_KEY="$phpauto_forecast_apikey" cd "$MY_PATH/app" &&  php app/console.php ai:run
+echo "Using forecast apikey: $phpauto_forecast_apikey"
+
+cd "$MY_PATH/app" && FORECAST_API_KEY="$phpauto_forecast_apikey" DB_dsn="mysql:host=10.0.0.5;dbname=speechdaemon" DB_username="speechdaemon" DB_password="speechdaemon" php app/console.php ai:run
 
