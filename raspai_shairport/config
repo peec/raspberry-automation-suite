@@ -1,5 +1,5 @@
 #!/bin/bash
 
-SHAIRPORT_PW="dirtymovie"
-
+#SHAIRPORT_PW=dirtymovie
+SHAIRPORT_META="/home/pi/raspai/raspai_shairport/data"
 

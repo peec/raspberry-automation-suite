@@ -1,2 +1,4 @@
 *.cfg
 .idea/
+/raspai_shairport/data/*
+!/raspai_shairport/data/gitkeep

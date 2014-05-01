@@ -30,7 +30,8 @@ test -f "/home/pi/raspai/raspai_shairport/config" && . "/home/pi/raspai/raspai_s
 
 DAEMON_ARGS="--daemon --pidfile $PIDFILE --log $LOGFILE"
 
-[ -z "$SHAIRPORT_PW" ]     || DAEMON_ARGS="$DAEMON_ARGS --password $SHAIRPORT_PW"
+[ -z "$SHAIRPORT_META" ]     || DAEMON_ARGS="$DAEMON_ARGS -C $SHAIRPORT_META"
+[ -z "$SHAIRPORT_PW" ]     || DAEMON_ARGS="$DAEMON_ARGS -k \"$SHAIRPORT_PW\""
 [ -z "$ERRFILE" ]     || DAEMON_ARGS="$DAEMON_ARGS --error $ERRFILE"
 [ -z "$AP_NAME" ]     || DAEMON_ARGS="$DAEMON_ARGS --name '$AP_NAME'"
 [ -z "$BUFFER_FILL" ] || DAEMON_ARGS="$DAEMON_ARGS -b $BUFFER_FILL"
