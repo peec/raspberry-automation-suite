@@ -17,6 +17,7 @@ First you need to install / compile:
 
 ```bash
 git clone https://github.com/peec/raspberry-automation-suite.git ~/raspai
+git submodule update --init --recursive
 chmod +x install.sh
 ./install.sh
 ```
